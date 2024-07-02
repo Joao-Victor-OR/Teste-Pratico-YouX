@@ -14,13 +14,11 @@
     <td>Backend</td>
     <td>Frontend</td>
     <td>Banco de Dados</td>
-    <td>Servidor BD</td>
   </tr>
   <tr>
-    <td>Java, JavaScript v20.9</td>
+    <td>Java v11, JavaScript v20.9</td>
     <td>HTML v5, CSS v3, JavaScript v20.9</td>
     <td>PostgreeSQL v14</td>
-    <td>ElephantSQL v14</td>
   </tr>
 </table>
 
