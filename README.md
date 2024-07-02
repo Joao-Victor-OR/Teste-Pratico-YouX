@@ -17,5 +17,3 @@
     <td>PostgreeSQL v14</td>
   </tr>
 </table>
-
-## Regra de Commit:
