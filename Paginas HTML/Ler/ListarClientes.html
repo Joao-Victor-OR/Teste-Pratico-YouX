@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <link rel="stylesheet" href="listar.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+                .then(response => response.json())
+                .then(data => {
+                    let ufSelect = document.getElementById('uf');
+                    data.forEach(estado => {
+                        let option = document.createElement('option');
+                        option.value = estado.sigla;
+                        option.text = estado.nome;
+                        ufSelect.appendChild(option);
+                    });
+                });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Clientes</h1>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Buscar cliente pelo CNPJ">
+            <button id="search-btn">Pesquisar</button>
+            <button id="add-client-btn">Cadastrar Cliente</button>
+        </div>
+        <table class="client-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>UF</th>
+                    <th>Localização</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nome do Cliente</td>
+                    <td>00.000.000/0000-00</td>
+                    <td>cliente@exemplo.com</td>
+                    <td>(00) 0000-0000</td>
+                    <td>SP</td>
+                    <td>Endereço do Cliente</td>
+                    <td>
+                        <div class="client-actions">
+                            <button class="action-btn">Ações</button>
+                            <ul class="dropdown">
+                                <li><button class="edit-btn">Editar</button></li>
+                                <li><button class="delete-btn">Excluir</button></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Adicione mais clientes aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para edição -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Editar Cliente</h2>
+            <form id="edit-form">
+                <label for="edit-name">Nome:</label>
+                <input type="text" id="edit-name" required>
+                <label for="edit-cnpj">CNPJ:</label>
+                <input type="text" id="edit-cnpj" required>
+                <label for="edit-email">Email:</label>
+                <input type="email" id="edit-email" required>
+                <label for="edit-phone">Telefone:</label>
+                <input type="text" id="edit-phone" required>
+                <label for="uf">UF:</label>
+                <select id="uf" name="uf" required></select>
+                <label for="edit-location">Localização:</label>
+                <input type="text" id="edit-location" required>
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para exclusão -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Confirmar Exclusão</h2>
+            <p>Tem certeza que deseja excluir este cliente?</p>
+            <button id="confirm-delete-btn">Excluir</button>
+            <button id="cancel-delete-btn">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="listar.js"></script>
+</body>
+</html>

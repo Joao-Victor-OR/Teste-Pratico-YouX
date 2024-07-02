@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Venda</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastrar Venda</h1>
+        <form id="cadastrar-venda-form">
+            <label for="cnpj">Cliente (CNPJ):</label>
+            <input type="text" id="cnpj" name="cnpj" required>
+            
+            <label for="data">Data da Venda:</label>
+            <input type="date" id="data" name="data" required>
+            
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                <option value="Aguardando pagamento">Aguardando pagamento</option>
+                <option value="Pagamento aprovado">Pagamento aprovado</option>
+                <option value="Aguardando envio">Aguardando envio</option>
+                <option value="À caminho">À caminho</option>
+                <option value="Finalizado">Finalizado</option>
+            </select>
+            
+            <label for="valor">Valor:</label>
+            <input type="number" id="valor" name="valor" step="0.01" required>
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>
